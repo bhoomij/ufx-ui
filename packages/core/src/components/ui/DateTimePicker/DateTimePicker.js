@@ -22,6 +22,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     value,
     name,
     className,
+    style,
     alignText,
     small,
     timeIntervals,
@@ -36,7 +37,6 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     onBlur,
     userDateFormat,
     error,
-    ...rest
   } = props
 
   const {
@@ -86,8 +86,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     <div
       ref={ref}
       className={cx(Classes.INPUT, className)}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
+      style={style}
     >
       {
       label && (
@@ -173,6 +172,11 @@ DateTimePicker.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * The style of the DateTimePicker.
+   */
+  // eslint-disable-next-line react/require-default-props
+  style: PropTypes.object,
+  /**
    * If true, set the DateTimePicker to the disabled state.
    */
   disabled: PropTypes.bool,
@@ -236,6 +240,7 @@ DateTimePicker.defaultProps = {
   name: null,
   label: '',
   className: null,
+  style: null,
   disabled: false,
   onChange: () => { },
   onBlur: () => { },

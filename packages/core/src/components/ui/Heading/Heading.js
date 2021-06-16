@@ -23,9 +23,9 @@ const Heading = forwardRef(function Heading(props, ref) {
     children,
     tag: Tag,
     className,
+    style,
     intent,
     alignText,
-    ...rest
   } = props
   const intentModifier = Classes.intentSuffix(intent)
   const classes = cx(
@@ -42,7 +42,7 @@ const Heading = forwardRef(function Heading(props, ref) {
       ref={ref}
       className={classes}
       // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
+      style={style}
     >
       {children}
     </Tag>
@@ -64,6 +64,11 @@ Heading.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * The style of the Heading.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  /**
    * The intent of the Heading.
    */
   intent: PropTypes.oneOf(INTENT_TYPES_ARR),
@@ -76,6 +81,7 @@ Heading.propTypes = {
 Heading.defaultProps = {
   tag: HEADING_TAGS.H2,
   className: null,
+  style: null,
   intent: Intent.NONE,
   alignText: TEXT_ALIGNMENT.LEFT,
 }

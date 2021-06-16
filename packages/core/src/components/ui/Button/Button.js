@@ -25,7 +25,6 @@ export const Button = forwardRef(function Button(props, ref) {
     title,
     small,
     outline,
-    ...rest
   } = props
 
   const intentModifier = Classes.intentSuffix(intent)
@@ -52,9 +51,8 @@ export const Button = forwardRef(function Button(props, ref) {
       }}
       disabled={disabled || loading}
       className={classes}
+      style={style}
       title={title}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
     >
       {children}
       {loading && <FontAwesomeIcon icon={faCircleNotch} spin size='lg' />}
@@ -87,6 +85,11 @@ Button.propTypes = {
    * The className of the Button.
    */
   className: PropTypes.string,
+  /**
+   * The style of the Button.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
   /**
    * If true, show the loading icon.
    */
@@ -129,6 +132,7 @@ Button.defaultProps = {
   id: null,
   as: 'button',
   className: null,
+  style: null,
   loading: false,
   disabled: false,
   onClick: () => { },

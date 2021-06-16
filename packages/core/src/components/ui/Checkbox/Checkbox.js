@@ -17,13 +17,13 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     checked,
     disabled,
     className,
+    style,
     id,
     name,
     onChange,
     error,
     small,
     helpMessage,
-    ...rest
   } = props
   const checkboxRef = useRef(null)
   const classes = cx(Classes.CHECKBOX, className, {
@@ -61,6 +61,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     <div
       ref={ref}
       className={classes}
+      style={style}
       htmlFor={id}
       tabIndex={disabled ? -1 : 0}
       role='checkbox'
@@ -68,7 +69,6 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
       onClick={handleLabelClick}
       onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
       // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
     >
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <input {...inputProps} />
@@ -117,6 +117,11 @@ Checkbox.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * The style of the Button.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  /**
    * The ID of the Button.
    */
   id: PropTypes.string,
@@ -146,6 +151,7 @@ Checkbox.defaultProps = {
   label: '',
   disabled: false,
   className: null,
+  style: null,
   id: null,
   name: null,
   onChange: () => { },

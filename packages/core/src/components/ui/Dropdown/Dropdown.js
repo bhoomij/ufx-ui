@@ -21,12 +21,12 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     searchable,
     searchModifier,
     className,
+    style,
     onChange,
     small,
     placeholder,
     closeOnMouseLeave,
     isOpen: isOpenProp,
-    ...rest
   } = props
 
   const [isOpen, setIsOpen] = useState(isOpenProp)
@@ -74,9 +74,9 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
       <div
         ref={ref}
         className={classes}
+        style={style}
         onMouseLeave={closeOnMouseLeave ? () => setIsOpen(false) : undefined}
         // eslint-disable-next-line react/jsx-props-no-spreading
-        {...rest}
       >
         {buttonElement}
 
@@ -113,6 +113,11 @@ Dropdown.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * The style of the Dropdown.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  /**
    * If true, shows the Button in a small style.
    */
   small: PropTypes.bool,
@@ -144,6 +149,7 @@ Dropdown.defaultProps = {
   id: null,
   name: null,
   className: null,
+  style: null,
   small: false,
   placeholder: null,
   closeOnMouseLeave: false,
